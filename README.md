@@ -30,3 +30,6 @@ jalanin dlu servernya jangan lupa
 ```sh
 http://localhost:3001/api-docs/#/
 ```
+
+## PR / TEST
+buat unit testing yang ada di swagger tsb!!!
