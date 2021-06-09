@@ -25,3 +25,8 @@ jalanin test e, (server kudu dipateni sek, ben iso mlaku)
 cd latian-hmmmhmmm
 npm run test
 ```
+## Swagger list Route
+jalanin dlu servernya jangan lupa
+```sh
+http://localhost:3001/api-docs/#/
+```
