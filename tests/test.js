@@ -1,12 +1,15 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../index');
+const sinon = require("sinon");
+const express = require('express');
 
 chai.use(chaiHttp);
 const should = chai.should();
 const expect = chai.expect
 
 const slug = 'lalala';
+
 describe("/", () => {
     describe("Get /", () => {
         it("should be hellow world", (done) => {
