@@ -7,7 +7,8 @@ requires [Node.js](https://nodejs.org/) (install dlu noh).
 copas sat set sat set gk pake lama.
 
 ```sh
-cd
+git clone https://github.com/damarteplok/latian-hmmmhmmm.git
+cd latian-hmmmhmmm
 npm install
 ```
 
@@ -15,12 +16,12 @@ npm install
 
 jalanin server e buat di coba di postman
 ```sh
-cd
+cd latian-hmmmhmmm
 node index.js
 ```
 
 jalanin test e, (server kudu dipateni sek, ben iso mlaku)
 ```sh
-cd
+cd latian-hmmmhmmm
 npm run test
 ```
