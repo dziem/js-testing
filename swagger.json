@@ -13,53 +13,18 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "TEST DOANG",
-      "description": "TEST DOANG anjir"
-    },
-    {
-      "name": "Resource",
-      "description": "Resource CRUD Test !!"
+      "name": "PR",
+      "description": "LIST LIST ROUTE BUAT PR KALIAN!!!"
     }
   ],
   "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
-    "/": {
+    "/api/activeresources": {
       "get": {
-        "tags": ["TEST DOANG"],
-        "summary": "test hellow world",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/test-slug/{slug}": {
-      "parameters": [
-        {
-          "name": "slug",
-          "in": "path",
-          "required": true,
-          "description": "Test Params doang",
-          "type": "string"
-        }
-      ],
-      "get": {
-        "tags": ["TEST DOANG"],
-        "summary": "test params",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/resources-list": {
-      "get": {
-        "tags": ["Resource"],
-        "summary": "Get All list",
+        "tags": ["PR"],
+        "summary": "Get Active id",
         "responses": {
           "200": {
             "description": "OK"
@@ -68,9 +33,18 @@
       }
     },
     "/api/resources": {
+      "get": {
+        "tags": ["PR"],
+        "summary": "Get All list",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
-        "tags": ["Resource"],
-        "summary": "Post Resource",
+        "tags": ["PR"],
+        "summary": "Post Resource form nya {title:'string',description:'string',link:'string',priority:'integer',timeToFinish:'integer',}",
         "parameters": [
           {
             "name": "form",
@@ -97,8 +71,8 @@
         }
       ],
       "get": {
-        "tags": ["Resource"],
-        "summary": "test summary",
+        "tags": ["PR"],
+        "summary": "GET id",
         "responses": {
           "200": {
             "description": "OK"
@@ -108,7 +82,18 @@
       "delete": {
         "summary": "Delete resource with given ID",
         "tags": [
-          "Resource"
+          "PR"
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource is deleted"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Patch resource with given ID",
+        "tags": [
+          "PR"
         ],
         "responses": {
           "200": {
