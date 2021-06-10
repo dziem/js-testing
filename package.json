@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai-nock": "^1.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.11.1",
@@ -21,6 +22,7 @@
     "babel-preset-env": "^1.7.0",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
-    "mocha": "^9.0.0"
+    "mocha": "^9.0.0",
+    "nock": "^13.1.0"
   }
 }

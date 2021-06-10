@@ -101,9 +101,6 @@ app.post(
         res.status(400).json({errors: "Gk ketemu listnya WOII"})
 })
 
-
-
-
 //PR nya bikin unit test nya
 app.get("/api/resources", (req, res) => {
     const resources = getResources()

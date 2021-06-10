@@ -1,15 +1,49 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const chaiNock = require('chai-nock');
 const app = require('../index');
+const app1 = require('../index');
 const sinon = require("sinon");
 const express = require('express');
+const calculator = require('../calculator')
+const nock = require('nock')
 
 chai.use(chaiHttp);
+chai.use(chaiNock);
 const should = chai.should();
 const expect = chai.expect
 
 const slug = 'lalala';
 
+describe("Using Sinon", () => {
+    describe("Stub", () => {
+        it("Contoh Penggunaan Stub", (done) => {
+            const stub = sinon.stub(calculator, 'tambah').callsFake( () => {
+                return 'Hellow World'
+            })
+            expect(calculator.tambah(2,2)).to.equal('Hellow World')
+            done()
+            stub.restore()
+        })
+    })
+    describe("Mock", () => {
+        it ("Contoh Penggunaan Mock", async () => {
+            nock('http://127.0.0.1:3001')
+                .get('/api/test-slug/asd')
+                .reply(400, { message: 'Hello asdasd' })
+
+            const result = await chai.request('http://127.0.0.1:3001').get('/api/test-slug/asd')
+            console.log(result)
+            expect(result.status).to.equal(400);
+            expect(result.body).to.deep.equal({ message : 'Hello asdasd'});
+            nock.cleanAll()
+        })
+    })
+})
+
+
+
+// UNIT TESTING NOT USING (STUB, MOCK)
 describe("/", () => {
     describe("Get /", () => {
         it("should be hellow world", (done) => {
