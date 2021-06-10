@@ -33,7 +33,6 @@ describe("Using Sinon", () => {
                 .reply(400, { message: 'Hello asdasd' })
 
             const result = await chai.request('http://127.0.0.1:3001').get('/api/test-slug/asd')
-            console.log(result)
             expect(result.status).to.equal(400);
             expect(result.body).to.deep.equal({ message : 'Hello asdasd'});
             nock.cleanAll()
