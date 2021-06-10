@@ -1,5 +1,9 @@
 # latian-hmmmhmmm
 
+## Slide 
+```sh
+https://docs.google.com/presentation/d/1UQ_89V2-atvDa7_KgNIijaUq2P_bkviLa-UKSWu3MDg/edit?usp=sharing
+```
 ## PRE
 
 requires [Node.js](https://nodejs.org/) (install dlu noh).
