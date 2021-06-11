@@ -207,3 +207,203 @@ describe("/api", () => {
         });
     })
 })
+
+describe("Test APIs", () => {
+    describe("Get all resources", () => {
+        it ("should return data", async () => {
+            nock('http://127.0.0.1:3001')
+                .get('/api/resources')
+                .reply(
+                    200, 
+                    [
+                        {
+                          "id": "1",
+                          "title": "lorem ipsum 1",
+                          "description": "lorem ipsum description 1",
+                          "link": "https://link.com",
+                          "priority": 3,
+                          "timeToFinish": 12,
+                          "createdAt": "2021-05-23T03:04:24.234Z",
+                          "status": "complete",
+                          "activationTime": "2021-05-30T03:39:59.624Z"
+                        }
+                    ]
+                )
+
+            const result = await chai.request('http://127.0.0.1:3001').get('/api/resources')
+            expect(result.status).to.equal(200);
+            expect(result.body[0]).to.deep.equal(
+                {
+                    "id": "1",
+                    "title": "lorem ipsum 1",
+                    "description": "lorem ipsum description 1",
+                    "link": "https://link.com",
+                    "priority": 3,
+                    "timeToFinish": 12,
+                    "createdAt": "2021-05-23T03:04:24.234Z",
+                    "status": "complete",
+                    "activationTime": "2021-05-30T03:39:59.624Z"
+                  }
+                );
+            nock.cleanAll()
+        })
+    })
+
+    describe("Get detail resources", () => {
+        it ("should return data detail", async () => {
+            nock('http://127.0.0.1:3001')
+                .get('/api/resources/1')
+                .reply(
+                    200, 
+                    {
+                        "id": "1",
+                        "title": "lorem ipsum 1",
+                        "description": "lorem ipsum description 1",
+                        "link": "https://link.com",
+                        "priority": 3,
+                        "timeToFinish": 12,
+                        "createdAt": "2021-05-23T03:04:24.234Z",
+                        "status": "complete",
+                        "activationTime": "2021-05-30T03:39:59.624Z"
+                    }
+                )
+
+            const result = await chai.request('http://127.0.0.1:3001').get('/api/resources/1')
+            expect(result.status).to.equal(200);
+            expect(result.body).to.deep.equal(
+                {
+                    "id": "1",
+                    "title": "lorem ipsum 1",
+                    "description": "lorem ipsum description 1",
+                    "link": "https://link.com",
+                    "priority": 3,
+                    "timeToFinish": 12,
+                    "createdAt": "2021-05-23T03:04:24.234Z",
+                    "status": "complete",
+                    "activationTime": "2021-05-30T03:39:59.624Z"
+                  }
+                );
+            nock.cleanAll()
+        })
+    })
+
+    describe("Post", () => {
+        it ("should return new data", async () => {
+            nock('http://127.0.0.1:3001')
+                .post('/api/resources')
+                .reply(
+                    200, 
+                    [
+                        {
+                            "title": "string",
+                            "description": "string",
+                            "link": "string",
+                            "priority": 12321,
+                            "timeToFinish": 123,
+                            "createdAt": "2021-06-11T07:17:45.195Z",
+                            "status": "inactive",
+                            "id": "1623395865195"
+                        }
+                    ]
+                )
+
+            const result = await chai.request('http://127.0.0.1:3001')
+            .post('/api/resources')
+            .type('form')
+            .send(
+                {
+                    "title":"string",
+                    "description":"string",
+                    "link":"string",
+                    "priority":12321,
+                    "timeToFinish":123
+                }
+              )
+            expect(result.status).to.equal(200);
+            expect(result.body[0]).to.deep.equal(
+                {
+                    "title": "string",
+                    "description": "string",
+                    "link": "string",
+                    "priority": 12321,
+                    "timeToFinish": 123,
+                    "createdAt": "2021-06-11T07:17:45.195Z",
+                    "status": "inactive",
+                    "id": "1623395865195"
+                }
+            );
+            nock.cleanAll()
+        })
+    })
+
+    describe("Patch", () => {
+        it ("should return success message", async () => {
+            nock('http://127.0.0.1:3001')
+                .patch('/api/resources/1')
+                .reply(
+                    200, 
+                    {
+                        message: "Data has been updated"
+                    }
+                )
+
+            const result = await chai.request('http://127.0.0.1:3001')
+            .patch('/api/resources/1')
+            .type('form')
+            .send(
+                {
+                    "title":"string",
+                    "description":"string",
+                    "link":"string",
+                    "priority":12321,
+                    "timeToFinish":123
+                }
+              )
+            expect(result.status).to.equal(200);
+            expect(result.body).to.deep.equal(
+                {
+                    message: "Data has been updated"
+                }
+            );
+            nock.cleanAll()
+        })
+    })
+
+    describe("Delete", () => {
+        it ("should return deleted data", async () => {
+            nock('http://127.0.0.1:3001')
+                .delete('/api/resources/1623395865195')
+                .reply(
+                    200, 
+                    {
+                        "title": "string",
+                        "description": "string",
+                        "link": "string",
+                        "priority": 12321,
+                        "timeToFinish": 123,
+                        "createdAt": "2021-06-11T07:17:45.195Z",
+                        "status": "inactive",
+                        "id": "1623395865195"
+                    }
+                )
+
+            const result = await chai.request('http://127.0.0.1:3001')
+            .delete('/api/resources/1623395865195')
+            .type('form')
+            expect(result.status).to.equal(200);
+            expect(result.body).to.deep.equal(
+                {
+                    "title": "string",
+                    "description": "string",
+                    "link": "string",
+                    "priority": 12321,
+                    "timeToFinish": 123,
+                    "createdAt": "2021-06-11T07:17:45.195Z",
+                    "status": "inactive",
+                    "id": "1623395865195"
+                }
+            );
+            nock.cleanAll()
+        })
+    })
+})

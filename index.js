@@ -181,7 +181,7 @@ app.patch("/api/resources/:id", (req, res) => {
         }
     })
 
-    res.json({errors: "Data has been updated"})
+    res.json({message: "Data has been updated"})
 
 })
 
